@@ -145,11 +145,13 @@ body {
     }
 
     .count {
-      color: #0c0e16;
+      color: #fff;
       font-size: 14px;
       font-weight: 700;
-      margin: 10px 0 0 0;
+    background-color: red;
       text-transform: uppercase;
+      justify-content: end;
+      margin-left: 200px;
     }
 
     .button-setting {
@@ -250,6 +252,7 @@ body {
         font-weight: 700;
         margin: 10px 0 0 0;
       }
+      
       .desc {
         color: #4f5e6b;
         font-size: 16px;
@@ -257,10 +260,10 @@ body {
       }
 
       .count {
-        color: #0c0e16;
+        color: #fff;
         font-size: 14px;
         font-weight: 700;
-        margin: 10px 0 0 0;
+        margin-left: 200px;
         text-transform: uppercase;
       }
       .button-setting {
