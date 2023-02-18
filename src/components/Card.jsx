@@ -1,6 +1,6 @@
 import buttonImg from '../assets/icon-ellipsis.svg';
 
-function Card({product, banner, currentTime, prevTime}) {
+function Card({product, banner,}) {
   const {category, rating, description, image, price, title} = product;
   const {count} = rating;
 
@@ -8,7 +8,7 @@ function Card({product, banner, currentTime, prevTime}) {
 
   return (
     <div className={`card ${title.split (' ').join ('-').toLowerCase ()}`}>
-      <div className="card__banner" />
+      <div className="card__banner"  />
       <div className="card__body">
         <h2 className="title">{title}</h2>
         <button className="button-setting">
