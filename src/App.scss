@@ -1,0 +1,280 @@
+@import url("https://fonts.googleapis.com/css2?&family=Rubik:wght@300;400;500&display=swap");
+
+$blue: hsl(246, 80%, 60%);
+$light-red-work: hsl(15, 100%, 70%);
+$soft-blue-play: hsl(195, 74%, 62%);
+$light-red-study: hsl(348, 100%, 68%);
+$lime-green-exercise: hsl(145, 58%, 55%);
+$violet-social: hsl(264, 64%, 52%);
+$soft-orange-self-care: hsl(43, 84%, 65%);
+$very-dark-blue: hsl(226, 43%, 10%);
+$dark-blue: hsl(235, 46%, 20%);
+$desaturated-blue: hsl(235, 45%, 61%);
+$pale-blue: hsl(236, 100%, 87%);
+
+%card {
+  margin: 2rem;
+  border-radius: 1rem;
+}
+
+$colors: (
+  "work": $light-red-work,
+  "play": $soft-blue-play,
+  "study": $light-red-study,
+  "exercise": $lime-green-exercise,
+  "social": $violet-social,
+  "self-care": $soft-orange-self-care,
+);
+
+body {
+  font-family: "Rubik";
+  font-size: 18px;
+  background-color: $very-dark-blue;
+  color: white;
+}
+
+.author {
+  @extend %card;
+  background-color: $dark-blue;
+
+  &__header {
+    background-color: $blue;
+    border-radius: 1rem;
+    display: grid;
+    column-gap: 0.5rem;
+    grid-template-columns: 30% 70%;
+    padding: 2rem;
+    align-items: center;
+    box-shadow: 0 5px 25px $very-dark-blue;
+
+    img {
+      width: 80%;
+      border: 3px solid white;
+      border-radius: 50%;
+    }
+
+    p {
+      font-size: 1rem;
+      margin: 0;
+      font-weight: 300;
+      color: $pale-blue;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      margin: 0.5rem 0 0;
+      font-weight: 300;
+    }
+  }
+
+  &__body {
+    ul {
+      list-style-type: none;
+      display: flex;
+      justify-content: space-between;
+      margin-top: 0;
+      padding: 1.5rem 2rem;
+      color: $pale-blue;
+    }
+
+    li {
+      button {
+        cursor: pointer;
+        background-color: transparent;
+        border: none;
+        color: $desaturated-blue;
+        &:hover {
+          color: white;
+        }
+        &.active {
+          color: white;
+        }
+      }
+    }
+  }
+}
+
+@each $name, $color in $colors {
+  .card.#{$name} {
+    background-color: $color;
+    position: relative;
+    height: 180px;
+  }
+
+  .card.#{$name} > .card__banner {
+    background-image: url(./assets/icon-#{$name}.svg);
+    background-position: top -10px right 20px;
+    height: 100px;
+    background-repeat: no-repeat;
+  }
+}
+
+.card {
+  @extend %card;
+  position: relative;
+
+  &__body {
+    background-color: $dark-blue;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    border-radius: 1rem;
+    padding: 2rem 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+
+    &:hover {
+      background-color: $desaturated-blue;
+    }
+
+    .title {
+      font-size: 1.2rem;
+      align-self: center;
+      padding-left: 2rem;
+    }
+
+    .current-time {
+      font-size: 2rem;
+      font-weight: 300;
+      padding-left: 2rem;
+    }
+
+    button {
+      width: 30%;
+      height: 32px;
+      justify-self: flex-end;
+      align-self: center;
+      border: none;
+      background-color: transparent;
+      padding: 0;
+      padding-right: 2rem;
+      cursor: pointer;
+    }
+
+    .previous-time {
+      font-size: 0.8rem;
+      font-weight: 400;
+      align-self: center;
+      justify-self: end;
+      color: $pale-blue;
+      padding-right: 2rem;
+    }
+
+    h2,
+    h3 {
+      margin: 0;
+    }
+  }
+}
+
+footer {
+  @extend %card;
+  font-size: 0.8rem;
+  font-weight: 300;
+  text-align: center;
+  a {
+    color: $soft-blue-play;
+    font-weight: 400;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .App > main {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 2rem;
+    margin: 2rem;
+    max-width: 1200px;
+  }
+
+  .author {
+    grid-column: 1/2;
+    grid-row: 1/3;
+
+    display: grid;
+    grid-template-rows: 70% 30%;
+
+    margin: 0;
+
+    &__header {
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(2, 1fr);
+      gap: 1rem;
+
+      padding: {
+        top: 3rem;
+        bottom: 3rem;
+      }
+      align-content: center;
+
+      img {
+        width: 40%;
+      }
+
+      h1 {
+        font-size: 2.2rem;
+        line-height: 1.2;
+      }
+    }
+
+    &__body {
+      display: flex;
+      align-items: center;
+      padding: 0;
+      ul {
+        display: grid;
+        row-gap: 1rem;
+        margin-bottom: 0;
+        li {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .card {
+    margin: 0;
+    height: auto !important;
+
+    &__body {
+      grid-template-rows: repeat(3, 1fr);
+      padding: 1rem 0 0rem;
+
+      .title {
+        padding-left: 1.5rem;
+      }
+
+      .current-time {
+        padding-left: 1.5rem;
+        font-size: 3rem;
+        grid-column: 1/3;
+      }
+
+      .previous-time {
+        grid-row: 3/4;
+        grid-column: 1/3;
+        padding: 0;
+        justify-self: flex-start;
+        align-self: flex-start;
+        margin-top: 0.5rem;
+        padding-left: 1.5rem;
+      }
+
+      button {
+        width: 35%;
+      }
+    }
+  }
+}
